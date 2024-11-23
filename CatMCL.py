@@ -7,13 +7,22 @@ class DownloadThread(QThread):
     progress_changed = pyqtSignal(int) 
     forge_ver = ""
     def get_username(self, filename):
+        newFilename = ""
+        if ".txt" in filename:
+            for i in range(0, len(filename)):
+                if filename[i] == "." and filename[i+1] = "t" and filename[i+2] = "x" and filename[i+3] = "t":
+                    break
+        else:
+            newFilename += filename[i]    
+                    
+
         file = open(filename + ".txt", "r")
         name = file.read()
         file.close()
         return name
     def run(self): 
         options = { 
-            "username": self.get_username("username.txt"), 
+            "username": self.get_username("username"), 
             "uuid": "user-uuid", 
             "token": "user-token", 
             "version": f"forge {self.forge_ver}", 

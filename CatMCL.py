@@ -3,16 +3,16 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QProgressBar, QVBoxLayout, QWidget 
 from PyQt5.QtCore import QThread, pyqtSignal 
 import minecraft_launcher_lib 
-def get_username(filename):
-    file = open(filename + ".txt", "r")
-    name = file.read()
-    file.close()
-    return name
 class DownloadThread(QThread): 
     progress_changed = pyqtSignal(int) 
+    def get_username(self, filename):
+        file = open(filename + ".txt", "r")
+        name = file.read()
+        file.close()
+        return name
     def run(self): 
         options = { 
-            "username": get_username("username.txt"), 
+            "username": self.get_username("username.txt"), 
             "uuid": "user-uuid", 
             "token": "user-token", 
             "version": "launcher_version", 

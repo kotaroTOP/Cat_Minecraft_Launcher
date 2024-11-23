@@ -10,6 +10,8 @@ class DownloadThread(QThread):
             for i in range(0, len(filename)):
                 if filename[i] == "." and filename[i+1] = "t" and filename[i+2] = "x" and filename[i+3] = "t":
                     break
+        if filename[i] == " ":
+            continue
         else:
             newFilename += filename[i]    
         file = open(filename + ".txt", "r")

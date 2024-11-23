@@ -5,6 +5,7 @@ class DownloadThread(QThread):
     progress_changed = pyqtSignal(int) 
     forge_ver = ""
     letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_", "-", "к", "о", "т", "я", "р", "а", "п", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "\", "|", "(", ")", ".", "[", "]"]
+    lettersUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "G", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     def get_username(self, filename):
         newFilename = ""
         name = ""
@@ -17,12 +18,12 @@ class DownloadThread(QThread):
         else:
             pass
         file = open(newFilename + ".txt", "r")
-        nameOld = file.read().lower()
+        nameOld = file.read()
         for i in range(0, len(nameOld)):
             if nameOld[i] == " ":
                 continue
             else:
-                if nameOld[i] in letters:
+                if nameOld[i] in letters or nameOld[i] in lettersUpper:
                     name += nameOld[i]
                 else:
                     continue

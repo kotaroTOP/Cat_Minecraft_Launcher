@@ -4,6 +4,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 class DownloadThread(QThread): 
     progress_changed = pyqtSignal(int) 
     forge_ver = ""
+    letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "_", "-", "к", "о", "т"]
     def get_username(self, filename):
         newFilename = ""
         name = ""
@@ -18,10 +19,13 @@ class DownloadThread(QThread):
         file = open(newFilename + ".txt", "r")
         nameOld = file.read().lower()
         for i in range(0, len(nameOld)):
-            if filename[i] == " ":
+            if nameOld[i] == " ":
                 continue
             else:
-                name += nameOld[i]
+                if nameOld[i] in letters:
+                    name += nameOld[i]
+                else:
+                    continue
         file.close()
         return name
     def run(self): 

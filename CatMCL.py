@@ -1,8 +1,6 @@
-import minecraft_launcher_lib, subprocess
-import sys 
+import minecraft_launcher_lib, subprocess, sys 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QProgressBar, QVBoxLayout, QWidget 
 from PyQt5.QtCore import QThread, pyqtSignal 
-import minecraft_launcher_lib 
 class DownloadThread(QThread): 
     progress_changed = pyqtSignal(int) 
     forge_ver = ""

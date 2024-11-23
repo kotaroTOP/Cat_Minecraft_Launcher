@@ -5,6 +5,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 import minecraft_launcher_lib 
 class DownloadThread(QThread): 
     progress_changed = pyqtSignal(int) 
+    forge_ver = ""
     def get_username(self, filename):
         file = open(filename + ".txt", "r")
         name = file.read()
@@ -15,7 +16,7 @@ class DownloadThread(QThread):
             "username": self.get_username("username.txt"), 
             "uuid": "user-uuid", 
             "token": "user-token", 
-            "version": "launcher_version", 
+            "version": f"forge {self.forge_ver}", 
             "path": ".CatLaunchMC" # minecraft_launcher_lib.utils.get_minecraft_directory().replace('minecraft', 'CatMCLauncher')
             "callback": { 
                 "setStatus": self.set_status, 

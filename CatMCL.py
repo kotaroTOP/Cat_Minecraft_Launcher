@@ -12,8 +12,6 @@ class DownloadThread(QThread):
                     break
         else:
             newFilename += filename[i]    
-                    
-
         file = open(filename + ".txt", "r")
         name = file.read()
         file.close()

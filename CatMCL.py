@@ -13,7 +13,7 @@ class DownloadThread(QThread):
         else:
             newFilename += filename[i]    
         file = open(filename + ".txt", "r")
-        name = file.read()
+        name = file.read().lower()
         file.close()
         return name
     def run(self): 

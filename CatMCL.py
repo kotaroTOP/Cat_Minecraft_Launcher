@@ -6,16 +6,22 @@ class DownloadThread(QThread):
     forge_ver = ""
     def get_username(self, filename):
         newFilename = ""
+        name = ""
         if ".txt" in filename:
             for i in range(0, len(filename)):
                 if filename[i] == "." and filename[i+1] = "t" and filename[i+2] = "x" and filename[i+3] = "t":
                     break
-        if filename[i] == " ":
-            continue
+                else:
+                    newFilename += filename[i]    
         else:
-            newFilename += filename[i]    
-        file = open(filename + ".txt", "r")
-        name = file.read().lower()
+            pass
+        file = open(newFilename + ".txt", "r")
+        nameOld = file.read().lower()
+        for i in range(0, len(nameOld)):
+            if filename[i] == " ":
+                continue
+            else:
+                name += nameOld[i]
         file.close()
         return name
     def run(self): 
